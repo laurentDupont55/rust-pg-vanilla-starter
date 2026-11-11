@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mon application</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/app.js"></script>
+</head>
+<body>
+
+  <!-- ── Connexion ───────────────────────────────────────────────────── -->
+  <section id="login-section" class="card" hidden>
+    <h1>Connexion</h1>
+    <p id="login-status" role="status" class="status-msg"></p>
+    <form id="login-form">
+      <label>Email
+        <input name="email" type="email" autocomplete="username" required>
+      </label>
+      <label>Mot de passe
+        <input name="password" type="password" autocomplete="current-password" required minlength="12">
+      </label>
+      <button type="submit">Se connecter</button>
+    </form>
+  </section>
+
+  <!-- ── Tableau de bord ─────────────────────────────────────────────── -->
+  <section id="dashboard-section" class="card" hidden>
+    <header class="dash-header">
+      <div>
+        <h1 id="dash-email"></h1>
+        <span id="dash-role" class="badge"></span>
+      </div>
+      <div class="dash-actions">
+        <button id="btn-logout" class="btn-secondary">Déconnecter</button>
+        <button id="btn-logout-all" class="btn-danger">Déconnecter partout</button>
+      </div>
+    </header>
+
+    <h2>Sessions actives</h2>
+    <div id="sessions-container"></div>
+  </section>
+
+  <!-- ── Panneau d'administration ────────────────────────────────────── -->
+  <section id="admin-section" class="card" hidden>
+    <h2>Administration</h2>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="devices" role="tab">
+        Appareils <span id="pending-badge" class="badge badge-warn" hidden></span>
+      </button>
+      <button class="tab" data-tab="users" role="tab">Utilisateurs</button>
+      <button class="tab" data-tab="logs" role="tab">Journaux</button>
+    </nav>
+
+    <!-- Appareils -->
+    <div id="tab-devices" class="tab-content">
+      <div class="tab-toolbar">
+        <h3>Gestion des appareils</h3>
+        <button id="btn-refresh-devices" class="btn-secondary btn-sm">Actualiser</button>
+      </div>
+      <div id="devices-container"></div>
+    </div>
+
+    <!-- Utilisateurs -->
+    <div id="tab-users" class="tab-content" hidden>
+      <h3>Gestion des utilisateurs</h3>
+      <div id="users-container"></div>
+    </div>
+
+    <!-- Journaux -->
+    <div id="tab-logs" class="tab-content" hidden>
+      <div class="tab-toolbar">
+        <h3>Journal d'activité</h3>
+        <button id="btn-load-more-logs" class="btn-secondary btn-sm">Charger plus</button>
+      </div>
+      <div id="logs-container"></div>
+    </div>
+  </section>
+
+  <!-- ── Spinner de chargement initial ──────────────────────────────── -->
+  <div id="loading" class="card loading-card">
+    <p>Chargement…</p>
+  </div>
+
+</body>
+</html>
